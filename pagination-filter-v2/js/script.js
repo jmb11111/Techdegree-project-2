@@ -1,28 +1,39 @@
+//variable storing all student info
 const students = $("li.student-item");
-let pagination = $('.pagination')
+
 let pages= Math.ceil(students.length/10);
+
+
 //function that hides all students
-const hideStudents = function hideStudents(){
+function hideStudents(){
   for (let i = 0; i < students.length; i++) {
     students[i].style.display='none';
   }
 }
-//function that shows first ten students
-const showStudents = function showStudents(){
-  for (let i = 0; i < 10; i++) {
-    students[i].style.display=''
+//loads 10 students, depending on which paramater is set
+function loadStudents(x) {
+hideStudents()
+let $students = students.slice((x-1) * 10, x * 10);
+  for (var i = 0; i < $students.length; i++) {
+  $students[i].style.display='';
   }
 }
-const createPagination = function createPagination(){
+
+//creates buttons on bottom of page depending on how many items are in the students array, then calls load students passing in the argument based on the number pressed
+function createPagination(){
   let ul=document.createElement('ul');
+
      for(i=0;i<pages;i++)
      {
          let li=document.createElement('li');
-         li.innerHTML= "<a href=# class='pages'"+ 'id='+(i+1)+ ">"+(i+1)+"</a>";
-         let pageNumber= document.getElementsByClassName('pages').id = i+1;
+         li.innerHTML= "<button onclick= loadStudents("+(i+1)+") class='pages'"+'>'+(i+1)+ "</button>";
          ul.appendChild(li);
+
      }
      document.getElementById('pagination').appendChild(ul);
-
 }
+
+
+
+loadStudents(1);
 createPagination();
