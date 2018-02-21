@@ -26,6 +26,7 @@ function createPagination(){
          li.innerHTML= "<button onclick= loadStudents("+(i+1)+") class='pages'"+'>'+(i+1)+ "</button>";
          ul.appendChild(li);
      }
+
      document.getElementById('pagination').appendChild(ul);
 }
 //creates an input box and search button
@@ -36,11 +37,28 @@ function createSearch(){
     search.id="searchBox";
     search.placeholder = "Search for students...";
     searchButton.innerHTML="Search";
-
 document.getElementById('student-search').appendChild(search);
 document.getElementById('student-search').appendChild(searchButton);
+
 }
 
+
+
+}
+
+function searchStudents(){
+let input = document.getElementById("searchBox").value;
+for (var i = 0; i < searched.length; i++) {
+  let list = $("li.student-item h3")[i].innerHTML;
+}
+if (input === list) {
+
+}
+
+
+
+console.log(input);
+}
 
 createSearch();
 loadStudents(1);

@@ -112,7 +112,9 @@ body{
       color: #4ba6c3;
     }
 
-    .pages:hover{
+    .pages:hover,
+    .pages:focus{
       background-color: #4ba6c3;
       color: #fff;
+      outline:0;
     }
