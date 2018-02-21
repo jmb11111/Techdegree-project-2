@@ -37,7 +37,6 @@ function createSearch(){
     search.id="searchBox";
     search.placeholder = "Search for students...";
     searchButton.innerHTML="Search";
-    searchButton.onclick=;
 document.getElementById('student-search').appendChild(search);
 document.getElementById('student-search').appendChild(searchButton);
 
