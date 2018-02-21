@@ -37,6 +37,8 @@ function createSearch(){
     search.id="searchBox";
     search.placeholder = "Search for students...";
     searchButton.innerHTML="Search";
+    searchButton.onclick=()=> searchStudents();
+    search.oninput=()=> searchStudents();
 document.getElementById('student-search').appendChild(search);
 document.getElementById('student-search').appendChild(searchButton);
 
@@ -45,20 +47,20 @@ document.getElementById('student-search').appendChild(searchButton);
 
 function searchStudents(){
 let input = document.getElementById("searchBox").value.toLowerCase();
-for (var i = 0; i < $("li.student-item h3").length; i++) {
-  let list = $("li.student-item h3")[i].innerHTML;
+let ele =$("li.student-item h3");
+for (var i = 0; i < ele.length; i++) {
+  let list = ele[i].innerHTML;
 
-    if (list === input) {
-      hideStudents();
+    if (list.includes(input)) {
       students[i].style.display='';
     }
-      else {
-        alert("Sorry, no one by that name!");
-        break;
+      else{
+        students[i].style.display='none';
       }
-}
+      }
 
 }
+
 
 
 createSearch();
