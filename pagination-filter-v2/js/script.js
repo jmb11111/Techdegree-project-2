@@ -11,7 +11,7 @@ function hideStudents(){
 }
 //loads 10 students, depending on which paramater is set
 function loadStudents(x) {
-hideStudents()
+hideStudents();
 let $students = students.slice((x-1) * 10, x * 10);
   for (var i = 0; i < $students.length; i++) {
   $students[i].style.display='';
@@ -37,28 +37,30 @@ function createSearch(){
     search.id="searchBox";
     search.placeholder = "Search for students...";
     searchButton.innerHTML="Search";
+    searchButton.onclick=;
 document.getElementById('student-search').appendChild(search);
 document.getElementById('student-search').appendChild(searchButton);
 
 }
 
 
-
-}
-
 function searchStudents(){
-let input = document.getElementById("searchBox").value;
-for (var i = 0; i < searched.length; i++) {
+let input = document.getElementById("searchBox").value.toLowerCase();
+for (var i = 0; i < $("li.student-item h3").length; i++) {
   let list = $("li.student-item h3")[i].innerHTML;
+
+    if (list === input) {
+      hideStudents();
+      students[i].style.display='';
+    }
+      else {
+        alert("Sorry, no one by that name!");
+        break;
+      }
 }
-if (input === list) {
 
 }
 
-
-
-console.log(input);
-}
 
 createSearch();
 loadStudents(1);
